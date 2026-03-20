@@ -1,0 +1,141 @@
+<!DOCTYPE html lang="en">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUICKCART</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+     <header  id="header">
+        <div class="name">
+            <div class="logo">
+                <img src="\images\icons\cart-icon.png">
+            </div> 
+            <h1 id="header-name">QuickCart</h1> 
+        </div>
+        
+        <nav id="nav-bar">
+            <a class="nav-link" href="#auth">SIGN UP</a>
+            <a class="nav-link" href="#shop">SHOP</a>
+            <a class="nav-link" href="#About_us">ABOUT US</a>
+        </nav>
+     </header>
+    
+<div class="auth-container" id="auth">
+    <div class="auth-box">
+        <div class="auth-tabs">
+            <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+            <button class="tab-btn" onclick="switchTab('register')">Register</button>
+        </div>
+
+        <form id="login-form" class="auth-form">
+            <h2>Welcome Back</h2>
+            <div class="input-group">
+                <label>Email Address</label>
+                <input type="email" id="login-email" placeholder="name@example.com" required>
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="login-pass" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="auth-submit-btn">Login</button>
+            <a href="#" class="forgot-link">Forgot password?</a>
+        </form>
+
+        <form id="register-form" class="auth-form hidden">
+            <h2>Create Account</h2>
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="reg-name" placeholder="John Doe" required>
+            </div>
+            <div class="input-group">
+                <label>Email Address</label>
+                <input type="email" id="reg-email" placeholder="name@example.com" required>
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="reg-pass" placeholder="Minimum 8 characters" required>
+            </div>
+            <button type="submit" class="auth-submit-btn register-color">Create Account</button>
+        </form>
+    </div>
+</div>
+           
+   
+        <section class="category-content" id="shop">
+            <h2 class="heading">Keep shopping for</h2>
+            <div class="category-grid">
+                <div class="category-nav">
+                    <a href="#auth">
+                        <img src="/images\electronics\iPhone-17-Pro-Max-Concept-Art-PNG.png">
+                        <p>Electronics</p>
+                    </a>
+                </div>
+                <div  class="category-nav">
+                    <a href="#auth">
+                        <img src="/images\fasions\Leather-Jacket-PNG-Pic.png">
+                        <p>Fasion</p>
+                    </a>
+                </div>
+                <div  class="category-nav">
+                    <a href="#auth">
+                        <img src="\images\kitchen\Home-Kitchen-Appliances-PNG-Picture.png">
+                        <p>Kitchen</p>
+                    </a>
+                </div>
+                <div  class="category-nav">
+                    <a href="#auth">
+                        <img src="\images\furniture\round-sunglasses-black.jpg">
+                        <p>Furniture</p>
+                    </a>
+                </div>
+                <div  class="category-nav">
+                    <a href="#auth">
+                        <img src="\images\footwears\Nike-Basketball-Shoes-Performance-Features-Overview-PNG.png">
+                        <p>Footwears</p>
+                    </a>
+                </div>
+            </div>
+               
+        </section> 
+         <section class="category-content" id="About_us">
+             <h2 class="heading">About Us</h2>
+            <div class="about_us-grid">
+                <div class="about_us-content">
+                    <div class="icon">
+                        <i class="fa fa-3x fa-fire"></i>
+                    </div>
+                    <div class="desc">
+                        <h2>Premium Materials</h2>
+                        <p>Experience the feel of premium materials-soft,durable, and designed to last.</p>
+                    </div>
+                </div>
+                <div class="about_us-content">
+                    <div class="icon">
+                        <i class="fa fa-3x fa-truck"></i>
+                    </div>
+                    <div class="desc">
+                        <h2>Fast Shipping</h2>
+                        <p>"Fast,reliable,and right to your doorstep.We also provide free returns if you are not satisfied."</p>
+                    </div>
+                </div>  
+                <div class="about_us-content">
+                    <div class="icon">
+                        <i class="fa fa-3x fa-battery-full"></i>
+                    </div>
+                    <div class="desc">
+                        <h2>Quality Assurance</h2>
+                        <p>"For every purchase you make, we will ensure there are no damages or faults and we will check and test the pitch of your materials"</p>
+                    </div>
+                </div>
+            </div>
+        </section>      
+        <footer>
+            <p><strong>&copy; 2026 QuickCart. All rights reserved</strong></p>
+        </footer>
+        <script src="app.js"></script>
+</body>
+</html>
