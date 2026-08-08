@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Chat Panel</title>
+    <link rel="stylesheet" href="../main/admin-chat.css">
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+    <div id="chat-sidebar">
+        <h2>Active User Chats (<span id="chat-count">0</span>)</h2>
+        <div id="active-chats-list">
+            <p style="font-size: 0.8em; opacity: 0.7;">No active chats.</p>
+        </div>
+    </div>
+
+    <div id="chat-main">
+        <div id="chat-header">Select a User to start chatting</div>
+        <div id="chat-window"></div>
+        <div id="input-area">
+            <input type="text" id="reply-input" placeholder="Type your reply here..." disabled>
+            <button id="send-button" disabled>Send Reply</button>
+        </div>
+    </div>
+
+    <script>
+        const socket = io("http://localhost:3000");
+
+        const activeChatsList = document.getElementById('active-chats-list');
+        const chatWindow = document.getElementById('chat-window');
+        const chatHeader = document.getElementById('chat-header');
+        const replyInput = document.getElementById('reply-input');
+        const sendButton = document.getElementById('send-button');
+        const chatCount = document.getElementById('chat-count');
+
+        let selectedUserId = null;
+        const chatHistory = new Map(); 
+
+        socket.on('connect', () => {
+            console.log('Connected to server as Admin.');
+            socket.emit('join chat', { role: 'admin', userId: 'Admin_Pavan' });
+        });
+
+        // 1. UPDATE SIDEBAR
+        socket.on('active chats list', (chats) => {
+            activeChatsList.innerHTML = '';
+            chatCount.textContent = chats.length;
+
+            if (chats.length === 0) {
+                activeChatsList.innerHTML = '<p style="font-size: 0.8em; opacity: 0.7;">No active chats.</p>';
+                return;
+            }
+
+            chats.forEach(chat => {
+                const item = document.createElement('div');
+                item.className = `chat-list-item ${chat.userId === selectedUserId ? 'active' : ''}`;
+                item.dataset.userId = chat.userId;
+                item.textContent = `User: ${chat.userId.substring(0, 8)}...`;
+                
+                item.onclick = () => {
+                    selectedUserId = chat.userId;
+                    chatHeader.textContent = `Chatting with: ${selectedUserId}`;
+                    replyInput.disabled = false;
+                    sendButton.disabled = false;
+                    loadChatWindow(selectedUserId);
+                    
+                    // Highlight active
+                    document.querySelectorAll('.chat-list-item').forEach(el => el.classList.remove('active'));
+                    item.classList.add('active');
+                };
+                activeChatsList.appendChild(item);
+            });
+        });
+
+        // 2. RECEIVE MESSAGE
+        socket.on('new user message', (msg) => {
+            const { userId, text } = msg;
+            
+            if (!chatHistory.has(userId)) chatHistory.set(userId, []);
+            chatHistory.get(userId).push({ sender: 'user', text: text });
+
+            // If we are looking at this user, show it now
+            if (userId === selectedUserId) {
+                displayMessage(text, 'user');
+            } else {
+                // Flash the sidebar item red if it's a new message for a different user
+                const item = document.querySelector(`.chat-list-item[data-user-id="${userId}"]`);
+                if (item) item.style.backgroundColor = "#ffebeb";
+            }
+        });
+
+        function loadChatWindow(userId) {
+            chatWindow.innerHTML = '';
+            const messages = chatHistory.get(userId) || [];
+            messages.forEach(msg => displayMessage(msg.text, msg.sender));
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        function displayMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${sender === 'user' ? 'user-message' : 'admin-reply'}`;
+            msgDiv.innerHTML = `<strong>${sender === 'user' ? 'User' : 'You'}:</strong> <div>${text}</div>`;
+            chatWindow.appendChild(msgDiv);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        function sendAdminReply() {
+            const text = replyInput.value.trim();
+            if (!text || !selectedUserId) return;
+
+            socket.emit('admin reply', { targetUserId: selectedUserId, text: text });
+            
+            if (!chatHistory.has(selectedUserId)) chatHistory.set(selectedUserId, []);
+            chatHistory.get(selectedUserId).push({ sender: 'admin', text: text });
+            
+            displayMessage(text, 'admin');
+            replyInput.value = '';
+        }
+
+        sendButton.onclick = sendAdminReply;
+        replyInput.onkeypress = (e) => { if(e.key === 'Enter') sendAdminReply(); };
+
+    </script>
+</body>
+</html>

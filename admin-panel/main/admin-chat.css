@@ -1,0 +1,159 @@
+/* --- Global Overrides for Chat Section --- */
+#chat-container-root {
+    display: flex;
+    height: 82vh; /* Fits perfectly in admin content area */
+    background-color: #0f0f0f;
+    color: #eee;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* --- Sidebar: Active Chats List --- */
+#chat-sidebar {
+    width: 300px;
+    background-color: #1a1a1a; /* Matches your sidebar */
+    color: white;
+    padding: 15px;
+    overflow-y: auto;
+    border-right: 1px solid #333;
+}
+
+.chat-list-item {
+    padding: 12px;
+    border-bottom: 1px solid #2a2a2a;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.chat-list-item:hover {
+    background-color: #252525;
+}
+
+.chat-list-item.active {
+    background-color: #222;
+    border-left: 4px solid #4bb543; /* QuickCart Green */
+}
+
+.new-message-indicator {
+    background-color: #e74c3c;
+    color: white;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 0.7em;
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+/* --- Main Chat Window --- */
+#chat-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #111;
+}
+
+#chat-header {
+    padding: 15px 20px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+    font-weight: bold;
+    color: #4bb543;
+    display: flex;
+    align-items: center;
+}
+
+#chat-window {
+    flex-grow: 1;
+    padding: 25px;
+    overflow-y: auto;
+    background-color: #0f0f0f; /* Obsidian background */
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Message Styles --- */
+.message {
+    margin-bottom: 15px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    max-width: 75%;
+    line-height: 1.4;
+    font-size: 0.95em;
+}
+
+.user-message {
+    background-color: #222; /* Darker grey for user */
+    color: #ddd;
+    align-self: flex-start;
+    border: 1px solid #333;
+    border-bottom-left-radius: 2px;
+}
+
+.admin-reply {
+    background-color: #1b4d2e; /* Dark forest green for Admin */
+    color: #fff;
+    align-self: flex-end;
+    margin-left: auto;
+    border: 1px solid #4bb543;
+    border-bottom-right-radius: 2px;
+}
+
+.message-sender {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    opacity: 0.8;
+}
+
+/* --- Input Area --- */
+#input-area {
+    padding: 20px;
+    display: flex;
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+    gap: 10px;
+}
+
+#reply-input {
+    flex-grow: 1;
+    padding: 12px;
+    background-color: #0a0a0a;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#reply-input:focus {
+    border-color: #4bb543;
+}
+
+#send-button {
+    padding: 0 20px;
+    background-color: #4bb543;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#send-button:hover {
+    background-color: #3e9e37;
+    transform: scale(1.02);
+}
+
+/* Custom Scrollbar */
+#chat-window::-webkit-scrollbar {
+    width: 5px;
+}
+#chat-window::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
