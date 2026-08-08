@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUICKCART</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* --- EXACT MATCH FROM USER.CSS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; 
+        }
+        
+        header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 5%;
+            background-color: #3498db; 
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 70px; /* Fixed height for consistency */
+        }
+
+        .name {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .logo img {
+            width: px; /* Slightly larger to match the title */
+            height: 45px;
+            object-fit: contain;
+        }
+
+        /* --- THIS MAKES QUICKCART BIGGER --- */
+        #header-name {
+           
+            font-size: 40px; /* Increased size to look "bigger" */
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        #nav-bar {
+            display: flex;
+            align-items: center;
+            gap: 25px; 
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease; 
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-link i.fa {
+            font-size: 22px; 
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-link:hover {
+            color: #ff9900; 
+            transform: translateY(-2px);
+        }
+
+        footer {
+            position: fixed !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: 100% !important; 
+            z-index: 1000 !important; 
+            background-color: #3498db !important; 
+            color: white !important; 
+            padding: 10px 0 !important;
+            text-align: center !important;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important; 
+        }
+
+        /* --- CHAT SPECIFIC STYLING --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #chat-container-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+
+        .chat-card {
+            width: 100%;
+            max-width: 500px;
+            height: 60vh;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #ffffff;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="name">
+            <div class="logo">
+                <img src="../images/icons/cart-icon.png" alt="Logo">
+            </div> 
+            <h1 id="header-name">QuickCart</h1> 
+        </div>
+        
+        <nav id="nav-bar">
+            <a class="nav-link" href="user.html"><i class="fa fa-home"></i></a>
+            <a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+            <a class="nav-link" href="profile.html"><i class="fa fa-user"></i></a>
+            <a class="nav-link" href="contact.html" style="color: #ff9900;"><i class="fa fa-comment"></i></a>
+        </nav>
+    </header>
+
+    <div id="chat-container-main">
+        <div class="chat-card">
+            <div class="p-4 bg-gray-50 border-b border-gray-200 flex justify-between items-center">
+                <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Live Support</span>
+                <span id="user-id" class="text-[10px] font-mono bg-blue-50 text-blue-600 px-2 py-1 rounded">ID: Loading...</span>
+            </div>
+
+            <div id="messages" class="custom-scrollbar space-y-4">
+                <div class="flex justify-start">
+                    <div class="max-w-[80%] p-3 rounded-xl bg-gray-100 text-gray-800 rounded-tl-none border border-gray-200">
+                        <p class="text-sm">Welcome to QuickCart! Enter your registered name?</p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="form" class="p-3 border-t border-gray-100 flex gap-2 bg-white">
+                <input id="input" type="text" placeholder="Type here..." autocomplete="off" 
+                       class="flex-grow p-2 border border-gray-200 rounded-md outline-none text-sm focus:border-blue-400">
+                <button type="submit" class="bg-[#3498db] text-white px-4 py-2 rounded-md text-sm font-bold">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 QuickCart. All rights reserved</p>
+    </footer>
+
+   <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+        const form = document.getElementById('form');
+        const input = document.getElementById('input');
+        const messages = document.getElementById('messages');
+        const userIdDisplay = document.getElementById('user-id');
+
+        const generateUserId = () => 'User_' + Math.random().toString(36).substring(2, 7);
+        const userId = localStorage.getItem('chatUserId') || generateUserId();
+        localStorage.setItem('chatUserId', userId);
+        userIdDisplay.textContent = userId;
+        const socket = io("http://localhost:3000");
+       
+
+        const appendMessage = (text, sender) => {
+            const isSelf = sender === 'You';
+            const div = document.createElement('div');
+            div.className = `flex ${isSelf ? 'justify-end' : 'justify-start'}`;
+            div.innerHTML = `
+                <div class="max-w-[80%] p-3 rounded-xl shadow-sm text-sm 
+                ${isSelf ? 'bg-[#3498db] text-white rounded-br-none' : 'bg-gray-100 text-gray-800 rounded-tl-none'}">
+                    ${text}
+                </div>`;
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight;
+        };
+
+        socket.on('connect', () => {
+            socket.emit('join chat', { role: 'user', userId: userId });
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (input.value) {
+                socket.emit('user message', { userId: userId, text: input.value });
+                appendMessage(input.value, 'You');
+                input.value = '';
+            }
+        });
+
+        socket.on('message to user', (msg) => {
+            if (msg.sender === 'Admin') appendMessage(msg.text, 'Admin');
+        });
+    </script>
+</body>
+</html>

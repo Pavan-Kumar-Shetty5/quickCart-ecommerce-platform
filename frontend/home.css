@@ -118,8 +118,13 @@ header {
     cursor: pointer;
     margin-top: 10px;
 }
+.auth-submit-btn:active{
+    background: #ff9900;
+    
+}
 
 .register-color { background: #3498db; }
+.register-color:active { background: #ff9900; }
 
 .hidden { display: none; }
 

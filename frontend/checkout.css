@@ -1,0 +1,26 @@
+body { font-family: sans-serif; background: #f4f4f4; }
+.checkout-container { max-width: 600px; margin: 50px auto; padding: 20px; }
+
+.section { 
+    background: #fff; padding: 20px; border-radius: 8px; 
+    margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
+
+.error-text { color: #d9534f; font-weight: bold; }
+
+.pay-option { 
+    display: block; padding: 12px; border: 1px solid #ddd; 
+    margin-bottom: 10px; border-radius: 5px; cursor: pointer; 
+}
+
+.pay-option:hover { background: #f0f7ff; border-color: #007bff; }
+
+.confirm-btn { 
+    width: 100%; padding: 15px; background: #28a745; 
+    color: white; border: none; border-radius: 5px; font-size: 1.1rem; 
+    cursor: pointer; box-shadow: 0 4px 0 #1e7e34;
+}
+
+.confirm-btn:active { transform: translateY(2px); box-shadow: none; }
+
+.edit-btn { background: none; border: 1px solid #007bff; color: #007bff; cursor: pointer; padding: 5px 10px; border-radius: 4px; }

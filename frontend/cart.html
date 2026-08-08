@@ -12,7 +12,7 @@
      <header  id="header">
         <div class="name">
             <div class="logo">
-                <img src="\images\icons\cart-icon.png">
+                <img src="..\images\icons\cart-icon.png">
             </div> 
             <h1 id="header-name">QuickCart</h1> 
         </div>
@@ -21,13 +21,13 @@
             <a class="nav-link" href="user.html">
                 <i class="fa fa-3x fa-home"></i>
             </a>
-            <a class="nav-link" href="#shop">
+            <a class="nav-link" href="cart.html">
                 <i class="fa fa-3x fa-shopping-cart"></i>
             </a>
-            <a class="nav-link" href="#About_us">
+            <a class="nav-link" href="profile.html">
                 <i class="fa fa-3x fa-user"></i>
             </a>
-            <a class="nav-link" href="#About_us">
+            <a class="nav-link" href="contact.html">
                 <i class="fa fa-3x fa-comment"></i>
             </a>
         </nav>
@@ -54,15 +54,17 @@
             <strong>Total Amount</strong>
             <strong class="js-final-total">₹0</strong>
         </div>
-        <button class="checkout-btn">PLACE ORDER</button>
+        <button  class="checkout-btn" onclick="proceedToCheckout()">PLACE ORDER</button>
     </div>
 </section>
         <footer>
             <p><strong>&copy; 2026 QuickCart. All rights reserved</strong></p>
         </footer>
-        <script src="/Data/product.js"></script>
-        <script src="/Data/cart.js"></script>
-         <script src="/Data/quickcart.js"></script>
+        <script src="../Data/product.js"></script>
+        <script src="../frontend/cart.js"></script>
+         <script src="../Data/quickcart.js"></script>
+         
+         
     
         
 </body>

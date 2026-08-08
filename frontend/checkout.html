@@ -1,0 +1,76 @@
+<!DOCTYPE html lang="en">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUICKCART</title>
+    <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+     <header  id="header">
+        <div class="name">
+            <div class="logo">
+                <img src="..\images\icons\cart-icon.png">
+            </div> 
+            <h1 id="header-name">QuickCart</h1> 
+        </div>
+        
+        <nav id="nav-bar">
+            <a class="nav-link" href="user.html">
+                <i class="fa fa-3x fa-home"></i>
+            </a>
+            <a class="nav-link" href="cart.html">
+                <i class="fa fa-3x fa-shopping-cart"></i>
+            </a>
+            <a class="nav-link" href="profile.html">
+                <i class="fa fa-3x fa-user"></i>
+            </a>
+            <a class="nav-link" href="#About_us">
+                <i class="fa fa-3x fa-comment"></i>
+            </a>
+        </nav>
+     </header>
+     
+    <div class="checkout-container">
+        <h2>Confirm Your Order</h2>
+
+        <div class="section" id="address-section">
+            <h3><i class="fa fa-truck"></i> Shipping Address</h3>
+            <div id="address-info">
+                <p>Checking for saved address...</p>
+            </div>
+            <button onclick="window.location.href='profile.html'" class="edit-btn">Edit Details</button>
+        </div>
+
+        <div class="section" id="payment-section" style="display: none;">
+            <h3><i class="fa fa-credit-card"></i> Payment Method</h3>
+            <div class="payment-options">
+                <label class="pay-option">
+                    <input type="radio" name="payment" value="COD" checked>
+                    <span>Cash on Delivery</span>
+                </label>
+                <label class="pay-option">
+                    <input type="radio" name="payment" value="UPI">
+                    <span>UPI / QR Code</span>
+                </label>
+                <label class="pay-option">
+                    <input type="radio" name="payment" value="CARD">
+                    <span>Debit/Credit Card</span>
+                </label>
+            </div>
+            <button id="confirmBtn" class="confirm-btn" onclick="placeOrder()">Confirm Order</button>
+        </div>
+    </div>
+
+    <script src="../frontend/checkout.js"></script>
+
+        <footer>
+            <p><strong>&copy; 2026 QuickCart. All rights reserved</strong></p>
+        </footer>
+        
+        
+</body>
+</html>

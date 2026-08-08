@@ -12,7 +12,7 @@
      <header  id="header">
         <div class="name">
             <div class="logo">
-                <img src="\images\icons\cart-icon.png">
+                <img src="..\images\icons\cart-icon.png">
             </div> 
             <h1 id="header-name">QuickCart</h1> 
         </div>
@@ -31,33 +31,33 @@
             <button class="tab-btn" onclick="switchTab('register')">Register</button>
         </div>
 
-        <form id="login-form" class="auth-form">
+        <form id="login-form" class="auth-form" action="../backend/auth.php" method="POST">
             <h2>Welcome Back</h2>
             <div class="input-group">
                 <label>Email Address</label>
-                <input type="email" id="login-email" placeholder="name@example.com" required>
+                <input type="email" name="email" id="login-email" placeholder="name@example.com" required>
             </div>
             <div class="input-group">
                 <label>Password</label>
-                <input type="password" id="login-pass" placeholder="••••••••" required>
+                <input type="password" name="password" id="login-pass" placeholder="••••••••" required>
             </div>
             <button type="submit" class="auth-submit-btn">Login</button>
-            <a href="#" class="forgot-link">Forgot password?</a>
+            <a href="../backend/forget-password.php" class="forgot-link">Forgot password?</a>
         </form>
 
-        <form id="register-form" class="auth-form hidden">
+        <form id="register-form" class="auth-form hidden" action="../backend/auth.php" method="POST">
             <h2>Create Account</h2>
             <div class="input-group">
                 <label>Full Name</label>
-                <input type="text" id="reg-name" placeholder="John Doe" required>
+                <input type="text" name="username" id="reg-name" placeholder="John Doe" required>
             </div>
             <div class="input-group">
                 <label>Email Address</label>
-                <input type="email" id="reg-email" placeholder="name@example.com" required>
+                <input type="email" name="email" id="reg-email" placeholder="name@example.com" required>
             </div>
             <div class="input-group">
                 <label>Password</label>
-                <input type="password" id="reg-pass" placeholder="Minimum 8 characters" required>
+                <input type="password" name="password" id="reg-pass" placeholder="Minimum 8 characters" required>
             </div>
             <button type="submit" class="auth-submit-btn register-color">Create Account</button>
         </form>
@@ -70,31 +70,31 @@
             <div class="category-grid">
                 <div class="category-nav">
                     <a href="#auth">
-                        <img src="/images\electronics\iPhone-17-Pro-Max-Concept-Art-PNG.png">
+                        <img src="../images/electronics/iPhone-17-Pro-Max-Concept-Art-PNG.png">
                         <p>Electronics</p>
                     </a>
                 </div>
                 <div  class="category-nav">
                     <a href="#auth">
-                        <img src="/images\fasions\Leather-Jacket-PNG-Pic.png">
+                        <img src="../images\fashions\Leather-Jacket-PNG-Pic.png">
                         <p>Fasion</p>
                     </a>
                 </div>
                 <div  class="category-nav">
                     <a href="#auth">
-                        <img src="\images\kitchen\Home-Kitchen-Appliances-PNG-Picture.png">
+                        <img src="..\images\kitchen\Home-Kitchen-Appliances-PNG-Picture.png">
                         <p>Kitchen</p>
                     </a>
                 </div>
                 <div  class="category-nav">
                     <a href="#auth">
-                        <img src="\images\furniture\round-sunglasses-black.jpg">
+                        <img src="..\images\furniture\round-sunglasses-black.jpg">
                         <p>Furniture</p>
                     </a>
                 </div>
                 <div  class="category-nav">
                     <a href="#auth">
-                        <img src="\images\footwears\Nike-Basketball-Shoes-Performance-Features-Overview-PNG.png">
+                        <img src="..\images\footwears\Nike-Basketball-Shoes-Performance-Features-Overview-PNG.png">
                         <p>Footwears</p>
                     </a>
                 </div>

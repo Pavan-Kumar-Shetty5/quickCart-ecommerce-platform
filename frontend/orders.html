@@ -1,0 +1,55 @@
+<!DOCTYPE html lang="en">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUICKCART</title>
+    <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="orders.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+     <header  id="header">
+        <div class="name">
+            <div class="logo">
+                <img src="..\images\icons\cart-icon.png">
+            </div> 
+            <h1 id="header-name">QuickCart</h1> 
+        </div>
+        
+        <nav id="nav-bar">
+            <a class="nav-link" href="user.html">
+                <i class="fa fa-3x fa-home"></i>
+            </a>
+            <a class="nav-link" href="cart.html">
+                <i class="fa fa-3x fa-shopping-cart"></i>
+            </a>
+            <a class="nav-link" href="profile.html">
+                <i class="fa fa-3x fa-user"></i>
+            </a>
+            <a class="nav-link" href="#About_us">
+                <i class="fa fa-3x fa-comment"></i>
+            </a>
+        </nav>
+     </header>
+     
+    <main class="orders-container">
+        <h2>My Order History</h2>
+        <hr>
+        <div id="orders-list">
+            <p class="loading">Loading your orders...</p>
+        </div>
+    </main>
+
+    <script src="../frontend/orders.js"></script>
+
+    
+
+        <footer>
+            <p><strong>&copy; 2026 QuickCart. All rights reserved</strong></p>
+        </footer>
+        
+        
+</body>
+</html>
