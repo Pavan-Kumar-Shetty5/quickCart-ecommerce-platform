@@ -1,0 +1,69 @@
+<!DOCTYPE html lang="en">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUICKCART</title>
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+     <header  id="header">
+        <div class="name">
+            <div class="logo">
+                <img src="\images\icons\cart-icon.png">
+            </div> 
+            <h1 id="header-name">QuickCart</h1> 
+        </div>
+        
+        <nav id="nav-bar">
+            <a class="nav-link" href="user.html">
+                <i class="fa fa-3x fa-home"></i>
+            </a>
+            <a class="nav-link" href="#shop">
+                <i class="fa fa-3x fa-shopping-cart"></i>
+            </a>
+            <a class="nav-link" href="#About_us">
+                <i class="fa fa-3x fa-user"></i>
+            </a>
+            <a class="nav-link" href="#About_us">
+                <i class="fa fa-3x fa-comment"></i>
+            </a>
+        </nav>
+     </header>
+     <section class="cart-container">
+    <div class="cart-items-list js-cart-items">
+        <h2 class="cart-title">Your Shopping Bag</h2>
+        
+        <div class="js-cart-items-container"></div>
+    </div>
+
+    <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div class="summary-row">
+            <span class="js-items-count">Price (0 items)</span>
+            <span class="js-total-mrp">₹0</span>
+        </div>
+        <div class="summary-row">
+            <span>Delivery Charges</span>
+            <span class="free-delivery">FREE</span>
+        </div>
+        <hr>
+        <div class="summary-row total-amount">
+            <strong>Total Amount</strong>
+            <strong class="js-final-total">₹0</strong>
+        </div>
+        <button class="checkout-btn">PLACE ORDER</button>
+    </div>
+</section>
+        <footer>
+            <p><strong>&copy; 2026 QuickCart. All rights reserved</strong></p>
+        </footer>
+        <script src="/Data/product.js"></script>
+        <script src="/Data/cart.js"></script>
+         <script src="/Data/quickcart.js"></script>
+    
+        
+</body>
+</html>
